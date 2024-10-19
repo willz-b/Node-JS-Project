@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <%- include('../includes/head') %>
+  </head>
+  <body>
+    <%- include('../includes/header') %>
+
+    <div class="container" style="margin-top: 80px !important">
+      <div class="row justify-content-md-center mb-5">
+        <div class="col-md-12 mt-5">
+          <h2 class="text-center title">
+            Materias Inscritas
+            <hr />
+          </h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8 py-3 custom_table">
+    <h3 class="text-center">
+        Lista de Materias Inscritas
+        <hr />
+    </h3>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Estudiante</th>
+                    <th>Materia</th>
+                    <th>Código</th>
+                    <th>Descripción</th>
+                    <th>Créditos</th>
+                    <th>Fecha de Inscripción</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% let contador = 1; %>
+                <% materiasInscritas.forEach(function(inscripcion) { %>
+                <tr>
+                    <th scope="row"><%= contador %></th>
+                    <td><%= inscripcion.nombre_alumno %></td>
+                    <td><%= inscripcion.materia_nombre %></td>
+                    <td><%= inscripcion.materia_codigo %></td>
+                    <td><%= inscripcion.materia_descripcion %></td>
+                    <td><%= inscripcion.materia_creditos %></td>
+                    <td><%= new Date(inscripcion.fecha_inscripcion).toLocaleDateString() %></td>
+                    <td>
+                        <!-- Aquí puedes agregar botones para acciones, como editar o eliminar -->
+                        <button class="btn btn-info">Editar</button>
+                        <button class="btn btn-danger">Eliminar</button>
+                    </td>
+                </tr>
+                <% contador++; %>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+  <%- include('../includes/scripts') %>
+</body>
+</html>
